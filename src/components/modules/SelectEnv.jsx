@@ -4,12 +4,12 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
 
-export default function NativeSelectDemo() {
+export default function NativeSelectDemo({ env, onChange }) {
   return (
     <Box sx={{ maxWidth: 200, mt: 5, mb: 5 }}>
       <FormControl fullWidth>
         <InputLabel variant="standard" htmlFor="uncontrolled-native">
-          Age
+          Environment
         </InputLabel>
         <NativeSelect
           defaultValue={"develop"}
@@ -17,6 +17,7 @@ export default function NativeSelectDemo() {
             name: "environment",
             id: "uncontrolled-native",
           }}
+          onChange={(e) => onChange(e)}
         >
           <option value={"develop"}>d環境</option>
           <option value={"test"}>t環境</option>

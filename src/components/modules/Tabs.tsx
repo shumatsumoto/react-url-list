@@ -37,12 +37,37 @@ function a11yProps(index: number) {
   };
 }
 
-export default function BasicTabs() {
+export default function BasicTabs({ env }: any) {
   const [value, setValue] = React.useState(0);
-
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+
+  const domainPortal = (() => {
+    switch (env) {
+      case "develop":
+        return "http://d.portal.jp";
+      case "test":
+        return "http://t.portal.jp";
+      case "production":
+        return "https://portal.jp";
+      default:
+        return "http://d.portal.jp";
+    }
+  })();
+
+  const domainPartner = (() => {
+    switch (env) {
+      case "develop":
+        return "http://d.partner.jp";
+      case "test":
+        return "http://t.partner.jp";
+      case "production":
+        return "https://partner.jp";
+      default:
+        return "http://d.partner.jp";
+    }
+  })();
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -58,61 +83,50 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <ol>
-          <li>
-            <a target="_blank" rel="noreferrer" href="http://d.test.jp/aaa/">
-              http://d.test.jp/aaa/
-            </a>
-          </li>
-          <li>
-            <a target="_blank" rel="noreferrer" href="http://d.test.jp/bbb/">
-              http://d.test.jp/bbb/
-            </a>
-          </li>
-          <li>
-            <a target="_blank" rel="noreferrer" href="http://d.test.jp/ccc/">
-              http://d.test.jp/ccc/
-            </a>
-          </li>
-        </ol>
+        <span className="listItem">
+          <a target="_blank" rel="noreferrer" href={domainPortal + "/aaa/"}>
+            {domainPortal}/aaa/
+          </a>
+        </span>
+        <span className="listItem">
+          <a target="_blank" rel="noreferrer" href={domainPortal + "/bbb/"}>
+            {domainPortal}/bbb/
+          </a>
+        </span>
+        <span className="listItem">
+          <a target="_blank" rel="noreferrer" href={domainPartner + "/bbb/"}>
+            {domainPartner}/aaa/
+          </a>
+        </span>
+        <span className="listItem">
+          <a target="_blank" rel="noreferrer" href={domainPartner + "/bbb/"}>
+            {domainPartner}/bbb/
+          </a>
+        </span>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ol>
-          <li>
-            <a target="_blank" rel="noreferrer" href="http://d.test.jp/aaa/">
-              http://d.test.jp/aaa/
-            </a>
-          </li>
-          <li>
-            <a target="_blank" rel="noreferrer" href="http://d.test.jp/bbb/">
-              http://d.test.jp/bbb/
-            </a>
-          </li>
-          <li>
-            <a target="_blank" rel="noreferrer" href="http://d.test.jp/ccc/">
-              http://d.test.jp/ccc/
-            </a>
-          </li>
-        </ol>
+        <span className="listItem">
+          <a target="_blank" rel="noreferrer" href={domainPortal + "/aaa/"}>
+            {domainPortal}/aaa/
+          </a>
+        </span>
+        <span className="listItem">
+          <a target="_blank" rel="noreferrer" href={domainPortal + "/bbb/"}>
+            {domainPortal}/bbb/
+          </a>
+        </span>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <ol>
-          <li>
-            <a target="_blank" rel="noreferrer" href="http://d.test.jp/aaa/">
-              http://d.test.jp/aaa/
-            </a>
-          </li>
-          <li>
-            <a target="_blank" rel="noreferrer" href="http://d.test.jp/bbb/">
-              http://d.test.jp/bbb/
-            </a>
-          </li>
-          <li>
-            <a target="_blank" rel="noreferrer" href="http://d.test.jp/ccc/">
-              http://d.test.jp/ccc/
-            </a>
-          </li>
-        </ol>
+        <span className="listItem">
+          <a target="_blank" rel="noreferrer" href={domainPortal + "/aaa/"}>
+            {domainPortal}/aaa/
+          </a>
+        </span>
+        <span className="listItem">
+          <a target="_blank" rel="noreferrer" href={domainPortal + "/bbb/"}>
+            {domainPortal}/bbb/
+          </a>
+        </span>
       </TabPanel>
     </Box>
   );

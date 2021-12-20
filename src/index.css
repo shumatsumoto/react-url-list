@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.MuiButtonBase-root {
+  width: 150px;
+}
+
+.MuiTypography-root {
+  counter-reset: rank 0;
+}
+
+.listItem {
+  display: block;
+  position: relative;
+}
+
+.MuiTypography-root > .listItem::before {
+  counter-increment: rank;
+  content: counter(rank);
+  position: absolute;
+  left: -1em;
+}
